@@ -23,8 +23,7 @@ public class Main{
         double stepSize = INITIAL_STEP_SIZE;
 
         for (int iteration = 1; iteration <= MAX_ITERATIONS; iteration++) {
-            double prevX = x;
-            double prevY = y;
+
             double fPrev = f(a, b, c, x, y);
 
             System.out.println("Iteration " + iteration + ":");
