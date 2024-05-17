@@ -17,7 +17,7 @@ public class Main{
         System.out.print("Enter the value for c: ");
         double c = scanner.nextDouble();
 
-        System.out.println(a+"x^2 + "+b+"xy + "+c+"y^2");
+        System.out.println(a+"x^2 + "+b+"xy + "+c+"y^2 = "+f(a, b, c, 2, 3));
 
         double[] solution = coordinateDescent(a, b, c, 2, 3);
         System.out.println("Minimum found at: x = " + solution[0] + ", y = " + solution[1]);
@@ -78,8 +78,6 @@ public class Main{
                 System.out.println("Search terminated: step size is too small.");
                 break;
             }
-
-
 
             // Reduce step size
             stepSize /= 2.0;
