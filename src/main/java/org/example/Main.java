@@ -1,17 +1,23 @@
 package org.example;
 
-import java.security.spec.RSAOtherPrimeInfo;
+
 import java.util.Scanner;
 
 public class Main{
     private static final double INITIAL_STEP_SIZE = 1.0;
-    private static final double MIN_STEP_SIZE = 0.1;
+    private static final double MIN_STEP_SIZE = 0.25;
     private static final int MAX_ITERATIONS = 10000;
 
     public static void main(String[] args) {
-        double a = 1.0;
-        double b = 2.0;
-        double c = 2.0;
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the value for a: ");
+        double a = scanner.nextDouble();
+        System.out.print("Enter the value for b: ");
+        double b = scanner.nextDouble();
+        System.out.print("Enter the value for c: ");
+        double c = scanner.nextDouble();
+
+        System.out.println(a+"x^2 + "+b+"xy + "+c+"y^2");
 
         double[] solution = coordinateDescent(a, b, c, 2, 3);
         System.out.println("Minimum found at: x = " + solution[0] + ", y = " + solution[1]);
