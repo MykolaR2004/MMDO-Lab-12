@@ -11,6 +11,7 @@ public class Main{
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_CYAN = "\u001B[36m";
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -36,13 +37,16 @@ public class Main{
             System.out.println();
             System.out.println(ANSI_BLUE + "Iteration " + iteration + " ---------------------------------------------" + ANSI_RESET);
 
+            System.out.print(ANSI_CYAN);
             double fPrev = f(a, b, c, x, y, true);
+            System.out.print(ANSI_RESET);
 
 //            System.out.println("Starting values: x = " + x + ", y = " + y + ", f(x, y) = " + fPrev);
 
+            var iterator = 0;
             // Step 1: Adjust x
             while (true) {
-                double fNext = f(a, b, c, x + stepSize, y, true);
+                double fNext = f(a, b, c, x + stepSize, y, iterator <= 0);
                 printComparison(new Point(x, y), new Point(x + stepSize, y), fPrev, fNext);
                 if (fNext < fPrev) {
                     x += stepSize;
@@ -58,11 +62,13 @@ public class Main{
                         break;
                     }
                 }
+                iterator++;
             }
 
+            var iterator2 = 0;
             // Step 2: Adjust y
             while (true) {
-                double fNext = f(a, b, c, x, y + stepSize, true);
+                double fNext = f(a, b, c, x, y + stepSize, iterator2 <= 0);
                 printComparison(new Point(x, y), new Point(x, y+stepSize), fPrev, fNext);
                 if (fNext < fPrev) {
                     y += stepSize;
@@ -78,6 +84,7 @@ public class Main{
                         break;
                     }
                 }
+                iterator2++;
             }
 
             // If step size is small enough, terminate the search
