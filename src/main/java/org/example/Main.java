@@ -10,14 +10,15 @@ public class Main{
     private static final String WARNING_COLOR = "\u001B[33m";
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLUE = "\u001B[34m";
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the value for a: ");
+        System.out.print("Enter the value for a >> ");
         double a = scanner.nextDouble();
-        System.out.print("Enter the value for b: ");
+        System.out.print("Enter the value for b >> ");
         double b = scanner.nextDouble();
-        System.out.print("Enter the value for c: ");
+        System.out.print("Enter the value for c >> ");
         double c = scanner.nextDouble();
 
 //        System.out.println(a+"x^2 + "+b+"xy + "+c+"y^2 = "+f(a, b, c, 2, 3, true));
@@ -33,7 +34,7 @@ public class Main{
 
         for (int iteration = 1; iteration <= MAX_ITERATIONS; iteration++) {
             System.out.println();
-            System.out.println("Iteration " + iteration + ":");
+            System.out.println(ANSI_BLUE + "Iteration " + iteration + " ---------------------------------------------" + ANSI_RESET);
 
             double fPrev = f(a, b, c, x, y, true);
 
