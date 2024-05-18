@@ -37,9 +37,7 @@ public class Main{
             System.out.println();
             System.out.println(ANSI_BLUE + "Iteration " + iteration + " ---------------------------------------------" + ANSI_RESET);
 
-            System.out.print(ANSI_CYAN);
             double fPrev = f(a, b, c, x, y, true);
-            System.out.print(ANSI_RESET);
 
 //            System.out.println("Starting values: x = " + x + ", y = " + y + ", f(x, y) = " + fPrev);
 
@@ -48,6 +46,7 @@ public class Main{
             while (true) {
                 double fNext = f(a, b, c, x + stepSize, y, iterator <= 0);
                 printComparison(new Point(x, y), new Point(x + stepSize, y), fPrev, fNext);
+                System.out.println();
                 if (fNext < fPrev) {
                     x += stepSize;
                     fPrev = fNext;
@@ -57,7 +56,8 @@ public class Main{
                         x -= stepSize;
                         fPrev = fNextDecrease;
                     } else {
-                        System.out.println(WARNING_COLOR + "Variable x locked at: x = " + x + ", f(x, y) = " + f(a, b, c, x, y, false) + ANSI_RESET);
+                        printComparison(new Point(x, y), new Point(x - stepSize, y), fNextDecrease,  f(a, b, c, x, y, false));
+                        System.out.println(WARNING_COLOR + "Variable x locked at: x = " + x + ANSI_RESET);
                         System.out.println();
                         break;
                     }
@@ -68,8 +68,10 @@ public class Main{
             var iterator2 = 0;
             // Step 2: Adjust y
             while (true) {
+
                 double fNext = f(a, b, c, x, y + stepSize, iterator2 <= 0);
                 printComparison(new Point(x, y), new Point(x, y+stepSize), fPrev, fNext);
+                System.out.println();
                 if (fNext < fPrev) {
                     y += stepSize;
                     fPrev = fNext;
@@ -79,7 +81,8 @@ public class Main{
                         y -= stepSize;
                         fPrev = fNextDecrease;
                     } else {
-                        System.out.println(WARNING_COLOR + "Variable y fixed at: y = " + y + ", f(x, y) = " + f(a, b, c, x, y, false) + ANSI_RESET);
+                        printComparison(new Point(x, y), new Point(x, y + stepSize), fNextDecrease,  f(a, b, c, x, y, false));
+                        System.out.println(WARNING_COLOR + "Variable y fixed at: y = " + y + ANSI_RESET);
                         System.out.println();
                         break;
                     }
@@ -119,7 +122,6 @@ public class Main{
         } else {
             comparison = "=";
         }
-        System.out.println(ANSI_GREEN + "Comparing: " + fNext + " (" + point2.x() + ", " + point2.y() + ") " + comparison + " " + fPrev+ " (" + point.x() + ", " + point.y() + ")" + ANSI_RESET);
-        System.out.println();
+        System.out.println(ANSI_GREEN + "Comparing: (" + point2.x() + ", " + point2.y() + ") " + comparison +" (" + point.x() + ", " + point.y() + ")                       (" + fNext + " " + comparison + " " + fPrev + ")" + ANSI_RESET);
     }
 }
