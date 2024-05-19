@@ -60,7 +60,6 @@ public class Main{
                         x -= stepSize;
                         fPrev = fNextDecrease;
                     } else {
-                        System.out.println(x + " " + y + " " + stepSize + " " + fPrev + "--");
                         printComparison(new Point(x, y), new Point(x - stepSize, y), fPrev, fNextDecrease);
                         System.out.println(WARNING_COLOR + "Variable x locked at: x = (" + x + ", " + y + ")" + ANSI_RESET);
                         System.out.println();
@@ -69,8 +68,6 @@ public class Main{
                 }
                 iterator++;
             }
-
-            System.out.println("++++++++++");
 
             var iterator2 = 0;
             // Step 2: Adjust y
@@ -90,7 +87,6 @@ public class Main{
                         y -= stepSize;
                         fPrev = fNextDecrease;
                     } else {
-                        System.out.println(x + " " + y + " " + stepSize + " " + fPrev);
                         printComparison(new Point(x, y), new Point(x, y - stepSize), fPrev, fNextDecrease);
                         System.out.println(WARNING_COLOR + "Variable y fixed at: y = (" + x + ", " + y + ")" + ANSI_RESET);
                         System.out.println();
